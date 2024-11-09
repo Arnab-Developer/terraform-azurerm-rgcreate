@@ -9,10 +9,14 @@ locals {
       }
     ]
   ])
+
+  applications_map = {
+    for index, application in local.applications : index => application
+  }
 }
 
 resource "azurerm_resource_group" "main" {
-  for_each = { for index, application in local.applications : index => application }
+  for_each = applications_map
 
   name     = each.value.name
   location = each.value.location
