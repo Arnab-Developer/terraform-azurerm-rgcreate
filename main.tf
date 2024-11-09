@@ -1,11 +1,11 @@
 locals {
   applications = flatten([
-    for application in var.applications : [
-      for environment in var.environments : {
-        name                 = "rg-${application}-${environment}"        
-        location             = environment == "prod" ? var.locations.primary : var.locations.secondary
-        work_force           = environment == "prod" ? "production" : "non-production"
-        has_developer_access = environment == "prod" ? "no" : "yes"
+    for application_name in var.application_names : [
+      for environment_name in var.environment_names : {
+        name                 = "rg-${application_name}-${environment_name}"        
+        location             = environment_name == "prod" ? var.locations.primary : var.locations.secondary
+        work_force           = environment_name == "prod" ? "production" : "non-production"
+        has_developer_access = environment_name == "prod" ? "no" : "yes"
       }
     ]
   ])
