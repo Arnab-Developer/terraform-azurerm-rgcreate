@@ -1,10 +1,10 @@
 variable "application_names" {
-  type = list(string)
+  type        = list(string)
   description = "Names of the applications."
 }
 
 variable "environment_names" {
-  type = list(string)
+  type        = list(string)
   description = "Names of the environments."
 }
 
