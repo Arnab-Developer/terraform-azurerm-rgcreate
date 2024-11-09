@@ -23,6 +23,16 @@ run "ResourceGroupsCreatedProperly_GivenValidInput" {
     error_message = "Invalid app1 dev resource group location."
   }
 
+  assert {
+    condition     = azurerm_resource_group.main[0].tags["work_force"] == "non-production"
+    error_message = "Invalid app1 dev resource group work_force tag."
+  }
+
+  assert {
+    condition     = azurerm_resource_group.main[0].tags["has_developer_access"] == "yes"
+    error_message = "Invalid app1 dev resource group has_developer_access tag."
+  }
+
   # App1 prod asserts
 
   assert {
@@ -33,6 +43,16 @@ run "ResourceGroupsCreatedProperly_GivenValidInput" {
   assert {
     condition     = azurerm_resource_group.main[1].location == "northeurope"
     error_message = "Invalid app1 prod resource group location."
+  }
+
+  assert {
+    condition     = azurerm_resource_group.main[1].tags["work_force"] == "production"
+    error_message = "Invalid app1 prod resource group work_force tag."
+  }
+
+  assert {
+    condition     = azurerm_resource_group.main[1].tags["has_developer_access"] == "no"
+    error_message = "Invalid app1 prod resource group has_developer_access tag."
   }
 
   # App2 dev asserts
@@ -47,6 +67,16 @@ run "ResourceGroupsCreatedProperly_GivenValidInput" {
     error_message = "Invalid app2 dev resource group location."
   }
 
+  assert {
+    condition     = azurerm_resource_group.main[2].tags["work_force"] == "non-production"
+    error_message = "Invalid app2 dev resource group work_force tag."
+  }
+
+  assert {
+    condition     = azurerm_resource_group.main[2].tags["has_developer_access"] == "yes"
+    error_message = "Invalid app2 dev resource group has_developer_access tag."
+  }
+
   # App2 prod asserts
 
   assert {
@@ -57,5 +87,15 @@ run "ResourceGroupsCreatedProperly_GivenValidInput" {
   assert {
     condition     = azurerm_resource_group.main[3].location == "northeurope"
     error_message = "Invalid app2 prod resource group location."
+  }
+
+  assert {
+    condition     = azurerm_resource_group.main[3].tags["work_force"] == "production"
+    error_message = "Invalid app2 prod resource group work_force tag."
+  }
+
+  assert {
+    condition     = azurerm_resource_group.main[3].tags["has_developer_access"] == "no"
+    error_message = "Invalid app2 prod resource group has_developer_access tag."
   }
 }
