@@ -4,8 +4,8 @@ run "ResourceGroupsCreatedProperly_GivenValidInput" {
     environment_names = ["dev", "prod"]
 
     locations = {
-      primary   = "North Europe"
-      secondary = "East US"
+      primary   = "northeurope"
+      secondary = "eastus"
     }
   }
 
