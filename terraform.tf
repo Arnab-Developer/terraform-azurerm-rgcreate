@@ -9,7 +9,7 @@ terraform {
   }
 
   cloud {
-    organizations = "[HCP org name]"
+    organization = "[HCP org name]"
 
     workspaces {
       name = "[HCP workspace name]"
